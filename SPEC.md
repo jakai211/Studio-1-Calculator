@@ -2,8 +2,8 @@
 
 ## STUDIO-001 · Launch a tested calculator on an existing server
 
-**Status:** Pending learner scope agreement and actual evidence.
-**Next step:** Confirm your clone with the coach, then follow [Lesson 01](studio/lesson-01.md).
+**Status:** Scope agreed November 6, 2026 ET; deployment incomplete.
+**Next step:** Restore server console access, inspect existing routing, and resolve the occupied QA hostname before deployment.
 **Instructor implementation:** [issue #9](https://github.com/kaw393939/373_hosting/issues/9).
 Create your own issue from the [lesson template](.github/ISSUE_TEMPLATE/studio-calculator.md).
 
@@ -18,10 +18,14 @@ An explicitly agreed adoption of a matching existing deployment is recorded
 as adoption, not a fresh launch. This bounded lesson does not certify the whole
 server baseline or a vulnerability-free image.
 
-- **Public hostname:** Pending.
-- **New launch or adopted deployment, and reason:** Pending.
-- **Own issue / feature branch:** Pending.
-- **Agreed scope or actual access/configuration gap:** Pending.
+- **Public hostname:** https://j5port-qa.duckdns.org (agreed target, not yet a calculator).
+- **New launch or adopted deployment, and reason:** New launch intended; neither launch nor adoption performed.
+- **Own issue / feature branch:** Issue draft reviewed by the learner; connector creation refused with HTTP 403. Feature branch: `studio-001-calculator`.
+- **Agreed scope or actual access/configuration gap:** Learner agreed to use QA for the supplied image and preserve https://j5port.duckdns.org, existing Docker/Traefik, and unrelated services. Read-only public checks found both hostnames already serving the portfolio. No route may be replaced without resolving this conflict explicitly. Root SSH rejected the available local key; DigitalOcean console access remains unresolved. No proxy network has been verified.
+
+The learner authorized powering on the existing droplet after it was found offline.
+DigitalOcean subsequently displayed Active. No container, route, proxy, DNS,
+certificate, or operating-system change has been made by this work.
 
 Private SSH targets and configuration stay in ignored local state. Share only
 reviewed, selected evidence; never commit credentials or raw server output.
@@ -30,12 +34,17 @@ reviewed, selected evidence; never commit credentials or raw server output.
 
 | Evidence | Actual result / link |
 |---|---|
-| Prepared Black/Pylint/pytest and real-image browser checks | Not run; full local E2E needs local Docker or actual CI evidence |
+| Prepared Black/Pylint/pytest and real-image browser checks | [Full Linux CI passed all three jobs](https://github.com/jakai211/Studio-1-Calculator/actions/runs/42340726893) at template commit `27e8dedefa99866d8dd6d825d0e929a373bf82ef`. Windows fast check: Black passed; Pylint and pytest failed on Linux-only APIs. Focused follow-up: 62 passed, 3 failed on Windows platform limitations. Local Docker E2E not run. |
 | Hosted image/commit, trusted HTTPS, valid and rejected API cases | Not verified; export selected evidence with `report` |
-| Preservation of unrelated services | Not verified |
+| Preservation of unrelated services | Both public roots returned HTTP 200 with trusted HTTPS after power-on and identical portfolio content. Baseline SHA-256: `d37c42fdd2eb8e147caeadc68c936c782dc844e2337b794444032ce3bb69fed6`. Container-level preservation is not yet verified. |
 | Own prediction, check interpretation, browser observation and keep/revise reason | [LEARNING.md](LEARNING.md), Pending; disclose assistance |
 | Accuracy review before publishing learner excerpts | Pending |
 | Actual PR, latest CI, merge and issue closure | Pending |
+
+[Current sanitized inspection evidence](studio/evidence.json) records incomplete
+work, not a successful CLI deployment report. Replace it with the prepared
+`report` export only after real runtime verification. The deadline passed before
+deployment; no completion timestamp is backdated.
 
 Link the exported `studio/evidence.json`, actual CI and issue/PR when available.
 CI does not deploy this server. A fixture, green check, timestamp, closed issue

@@ -1,0 +1,29 @@
+{
+  "lesson": "STUDIO-001",
+  "record_type": "incomplete-inspection",
+  "completed": false,
+  "scope_agreed_date_et": "2026-11-06",
+  "calculator_target": "https://j5port-qa.duckdns.org",
+  "preserve_origin": "https://j5port.duckdns.org",
+  "deployment": {"performed": false, "adopted": false, "runtime_verified": false},
+  "public_baseline": {
+    "observed_at": "2026-11-07T05:00:09Z",
+    "both_https_roots_status": 200,
+    "tls_validation_disabled": false,
+    "content": "Existing portfolio on both hostnames; proposed QA hostname occupied",
+    "body_sha256": "d37c42fdd2eb8e147caeadc68c936c782dc844e2337b794444032ce3bb69fed6"
+  },
+  "checks": {
+    "setup": "passed with PYTHONIOENCODING=utf-8",
+    "windows_fast_check": "failed: Linux-only os.geteuid/os.chown and signal.SIGHUP APIs",
+    "black": "passed; 8 files unchanged",
+    "focused_windows_followup": {"passed": 62, "failed": 3, "limitations": "Linux APIs and Windows symlink privileges"},
+    "local_docker_e2e": "not run: Docker daemon unavailable",
+    "ci_url": "https://github.com/jakai211/Studio-1-Calculator/actions/runs/42340726893",
+    "ci_commit": "27e8dedefa99866d8dd6d825d0e929a373bf82ef",
+    "ci_jobs": {"studio": "success", "validate": "success", "integration-contract": "success"}
+  },
+  "server_changes": ["Owner-authorized power-on of existing droplet"],
+  "container_preservation": "not yet inspected",
+  "gaps": ["Authenticated server access", "Occupied hostname decision", "Verified proxy network", "Actual calculator launch and runtime verification", "Learner prediction, check interpretation, browser observation, and keep/revise reason", "Reviewed learning summary", "Created issue and merged PR"]
+}
