@@ -1,29 +1,46 @@
 {
-  "lesson": "STUDIO-001",
-  "record_type": "incomplete-inspection",
-  "completed": false,
-  "scope_agreed_date_et": "2026-11-06",
-  "calculator_target": "https://j5port-qa.duckdns.org",
-  "preserve_origin": "https://j5port.duckdns.org",
-  "deployment": {"performed": false, "adopted": false, "runtime_verified": false},
-  "public_baseline": {
-    "observed_at": "2026-11-07T05:00:09Z",
-    "both_https_roots_status": 200,
-    "tls_validation_disabled": false,
-    "content": "Existing portfolio on both hostnames; proposed QA hostname occupied",
-    "body_sha256": "d37c42fdd2eb8e147caeadc68c936c782dc844e2337b794444032ce3bb69fed6"
+  "status": "passed",
+  "mode": "hosted",
+  "provenance": "already-managed",
+  "new_launch": false,
+  "expected": {
+    "image": "docker.io/kaw393939/is373_ci_cd@sha256:aec414c990a5de6ed74c9e8dcb105b78f6358c03a8cea70a9d40dcda51c3a8fa",
+    "commit": "4600202bad42da0c5ffb11d83ce8364671293d3d"
+  },
+  "actual": {
+    "image_id": "sha256:aec414c990a5de6ed74c9e8dcb105b78f6358c03a8cea70a9d40dcda51c3a8fa",
+    "repo_digests": [
+      "kaw393939/is373_ci_cd@sha256:aec414c990a5de6ed74c9e8dcb105b78f6358c03a8cea70a9d40dcda51c3a8fa"
+    ],
+    "commit": "4600202bad42da0c5ffb11d83ce8364671293d3d",
+    "environment": "production",
+    "container_id": "82982685ce748b313cfddc845ae6b9dfa1087e5e4d2a1eb88e4790fc303b59c7",
+    "architecture": "amd64",
+    "os": "linux"
   },
   "checks": {
-    "setup": "passed with PYTHONIOENCODING=utf-8",
-    "windows_fast_check": "failed: Linux-only os.geteuid/os.chown and signal.SIGHUP APIs",
-    "black": "passed; 8 files unchanged",
-    "focused_windows_followup": {"passed": 62, "failed": 3, "limitations": "Linux APIs and Windows symlink privileges"},
-    "local_docker_e2e": "not run: Docker daemon unavailable",
-    "ci_url": "https://github.com/jakai211/Studio-1-Calculator/actions/runs/42340726893",
-    "ci_commit": "27e8dedefa99866d8dd6d825d0e929a373bf82ef",
-    "ci_jobs": {"studio": "success", "validate": "success", "integration-contract": "success"}
+    "health_identity": "passed",
+    "positive_multiply": {
+      "status": 200,
+      "result": 42
+    },
+    "negative_division_by_zero": {
+      "status": 400
+    },
+    "negative_numeric_string": {
+      "status": 422
+    },
+    "trusted_public_https": true
   },
-  "server_changes": ["Owner-authorized power-on of existing droplet"],
-  "container_preservation": "not yet inspected",
-  "gaps": ["Authenticated server access", "Occupied hostname decision", "Verified proxy network", "Actual calculator launch and runtime verification", "Learner prediction, check interpretation, browser observation, and keep/revise reason", "Reviewed learning summary", "Created issue and merged PR"]
+  "preservation": {
+    "checked_count": 2,
+    "unchanged": true,
+    "scope": "container identity, state and published ports"
+  },
+  "limitations": [
+    "This is a supplied image, not the learner's build or CI/CD pipeline.",
+    "API checks do not prove a human review or whole-server security."
+  ],
+  "observed_at": "2026-11-17T17:07:47.110966+00:00",
+  "url": "https://j5port-qa.duckdns.org"
 }
