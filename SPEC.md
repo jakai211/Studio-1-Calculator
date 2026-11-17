@@ -2,8 +2,8 @@
 
 ## STUDIO-001 · Launch a tested calculator on an existing server
 
-**Status:** Pending learner scope agreement and actual evidence.
-**Next step:** Confirm your clone with the coach, then follow [Lesson 01](studio/lesson-01.md).
+**Status:** Calculator deployed November 7, 2026; recorded hosted verification passed again November 17. Learner reports browser and API results of 42 for 6 × 7 and chooses keep. Missing learner explanations remain explicit in LEARNING.md.
+**Next step:** Finish PR checks and merge if safe; retain issue #1 for the outstanding learner contributions and review.
 **Instructor implementation:** [issue #9](https://github.com/kaw393939/373_hosting/issues/9).
 Create your own issue from the [lesson template](.github/ISSUE_TEMPLATE/studio-calculator.md).
 
@@ -18,10 +18,15 @@ An explicitly agreed adoption of a matching existing deployment is recorded
 as adoption, not a fresh launch. This bounded lesson does not certify the whole
 server baseline or a vulnerability-free image.
 
-- **Public hostname:** Pending.
-- **New launch or adopted deployment, and reason:** Pending.
-- **Own issue / feature branch:** Pending.
-- **Agreed scope or actual access/configuration gap:** Pending.
+- **Public hostname:** https://j5port-qa.duckdns.org — working calculator.
+- **New launch or adopted deployment, and reason:** New launch on November 7; [original launch report](studio/launch-evidence.json) preserves `new_launch: true`. The [latest verification report](studio/evidence.json) says `already-managed` because it checks that existing deployment.
+- **Own issue / feature branch / PR:** [Issue #1](https://github.com/jakai211/Studio-1-Calculator/issues/1), `studio-001-calculator`, [PR #2](https://github.com/jakai211/Studio-1-Calculator/pull/2).
+- **Agreed scope and replacement deviation:** Initial agreement was QA for the supplied image and preservation of the portfolio at https://j5port.duckdns.org. The learner subsequently deleted the original droplet and explicitly approved a replacement Ubuntu server, Docker/Traefik setup, portfolio restoration, and calculator deployment. The original server was NOT preserved. The two unchanged containers reported by verification belong to the replacement hosting setup, not the deleted droplet. The calculator uses the replacement's `hosting-web` network and Traefik HTTPS routing.
+
+The learner approved the replacement's $6/month plan and existing SSH key.
+The captured portfolio HTML was restored, both DNS hostnames were updated, and
+the prepared calculator was launched after checks. No claim is made that this
+restoration recovered every service or file on the deleted server.
 
 Private SSH targets and configuration stay in ignored local state. Share only
 reviewed, selected evidence; never commit credentials or raw server output.
@@ -30,12 +35,32 @@ reviewed, selected evidence; never commit credentials or raw server output.
 
 | Evidence | Actual result / link |
 |---|---|
-| Prepared Black/Pylint/pytest and real-image browser checks | Not run; full local E2E needs local Docker or actual CI evidence |
-| Hosted image/commit, trusted HTTPS, valid and rejected API cases | Not verified; export selected evidence with `report` |
-| Preservation of unrelated services | Not verified |
-| Own prediction, check interpretation, browser observation and keep/revise reason | [LEARNING.md](LEARNING.md), Pending; disclose assistance |
-| Accuracy review before publishing learner excerpts | Pending |
-| Actual PR, latest CI, merge and issue closure | Pending |
+| Prepared Black/Pylint/pytest and real-image browser checks | [Full Linux CI passed all three jobs](https://github.com/jakai211/Studio-1-Calculator/actions/runs/42340726893) at template commit `27e8dedefa99866d8dd6d825d0e929a373bf82ef`. Windows fast check: Black passed; Pylint and pytest failed on Linux-only APIs. Focused follow-up: 62 passed, 3 failed on Windows platform limitations. Local Docker E2E not run. |
+| Hosted image/commit, trusted HTTPS, valid and rejected API cases | November 17 prepared `verify` and `report` passed: expected pinned image and app commit match; trusted HTTPS; multiply 6 × 7 returns HTTP 200/result 42; division by zero returns 400; numeric string returns 422. See [sanitized evidence](studio/evidence.json). |
+| Preservation of unrelated services | Original server deleted by learner; see deviation above. On November 7, restored portfolio HTTP 200 and HTML SHA-256 matched the pre-deletion capture: `d37c42fdd2eb8e147caeadc68c936c782dc844e2337b794444032ce3bb69fed6`. Latest verification reports two replacement hosting containers unchanged in identity, state, and published ports. |
+| AI browser review | November 7: browser and API both displayed 42 for 6 × 7; division by zero showed an error. [Calculation screenshot](studio/screenshots/calculator-42.png), [rejected calculation](studio/screenshots/calculator-invalid.png). These are AI observations, not learner observations. |
+| Own prediction, check interpretation, browser observation and keep/revise reason | [LEARNING.md](LEARNING.md): learner reports browser 42, API 42 for 6 × 7, decision keep, no additional notes. Original network blocked DuckDNS. Prediction, independent interpretation and separate keep reason remain missing; explanatory prose is labeled AI assistance. |
+| Accuracy review before publishing learner excerpts | Learner explicitly requested publication of the reflection based solely on supplied observations and merge if safe. No separate accuracy-review answer is claimed. |
+| Actual PR, latest CI, merge and issue closure | [PR #2](https://github.com/jakai211/Studio-1-Calculator/pull/2); [full branch CI passed](https://github.com/jakai211/Studio-1-Calculator/actions/runs/44133696274) at `cb273998c3a3284b52477d8b7e5ded05be81e4ac`. See PR checks for the reflection commit and merge state. Issue #1 remains open for documented learner gaps. |
+
+### Reflection completion checks · November 17, 2026
+
+The fresh Windows checkout completed setup with UTF-8 output enabled.
+`python studio.py check --fast`: Black passed (8 files unchanged); Pylint
+reported unavailable Windows `os.geteuid`/`os.chown`; pytest stopped during
+collection because `signal.SIGHUP` is unavailable. These are failures, not passes.
+Local Docker E2E was not run; the Linux CI workflow supplies full checks.
+
+A fresh HTTPS root/API attempt from this environment failed during the TLS
+connection with a connection reset; no new live result is claimed. The existing
+runtime reports are retained with their original timestamps. They are distinct
+from the learner's reported successful test and this unsuccessful retest.
+
+[Current sanitized runtime evidence](studio/evidence.json) is the actual prepared
+`report` export after November 17 verification. The November 7 launch report is
+retained separately. The original deadline passed before deployment; no timestamp
+is backdated. On November 17 the learner shared instructor feedback inviting
+completion and resubmission without a late penalty.
 
 Link the exported `studio/evidence.json`, actual CI and issue/PR when available.
 CI does not deploy this server. A fixture, green check, timestamp, closed issue
