@@ -1,5 +1,7 @@
 # IS373 Server Studio
 
+**Individual Plan review:** [Portfolio + career research and RAG app + technical research](SPEC.md). This is the combined evolving record; the original calculator lesson evidence is preserved there.
+
 **Launch a calculator on the server you already built—with an AI coach—and show
 what proves it works.** Your first lesson uses a published image, your existing
 Docker/Traefik setup and one public HTTPS hostname. You practice agreeing a small
