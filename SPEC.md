@@ -2,8 +2,8 @@
 
 ## STUDIO-001 · Launch a tested calculator on an existing server
 
-**Status:** Calculator deployed November 7, 2026; hosted verification passed again November 17, 2026. Learner observations/review and final GitHub completion remain pending.
-**Next step:** Learner tries the public calculator and explains one actual result; review the learning summary before publication and finish the PR.
+**Status:** Calculator deployed November 7, 2026; recorded hosted verification passed again November 17. Learner reports browser and API results of 42 for 6 × 7 and chooses keep. Missing learner explanations remain explicit in LEARNING.md.
+**Next step:** Finish PR checks and merge if safe; retain issue #1 for the outstanding learner contributions and review.
 **Instructor implementation:** [issue #9](https://github.com/kaw393939/373_hosting/issues/9).
 Create your own issue from the [lesson template](.github/ISSUE_TEMPLATE/studio-calculator.md).
 
@@ -39,9 +39,22 @@ reviewed, selected evidence; never commit credentials or raw server output.
 | Hosted image/commit, trusted HTTPS, valid and rejected API cases | November 17 prepared `verify` and `report` passed: expected pinned image and app commit match; trusted HTTPS; multiply 6 × 7 returns HTTP 200/result 42; division by zero returns 400; numeric string returns 422. See [sanitized evidence](studio/evidence.json). |
 | Preservation of unrelated services | Original server deleted by learner; see deviation above. On November 7, restored portfolio HTTP 200 and HTML SHA-256 matched the pre-deletion capture: `d37c42fdd2eb8e147caeadc68c936c782dc844e2337b794444032ce3bb69fed6`. Latest verification reports two replacement hosting containers unchanged in identity, state, and published ports. |
 | AI browser review | November 7: browser and API both displayed 42 for 6 × 7; division by zero showed an error. [Calculation screenshot](studio/screenshots/calculator-42.png), [rejected calculation](studio/screenshots/calculator-invalid.png). These are AI observations, not learner observations. |
-| Own prediction, check interpretation, browser observation and keep/revise reason | [LEARNING.md](LEARNING.md), Pending; disclose assistance |
-| Accuracy review before publishing learner excerpts | Pending |
-| Actual PR, latest CI, merge and issue closure | [PR #2](https://github.com/jakai211/Studio-1-Calculator/pull/2); [previous branch CI passed](https://github.com/jakai211/Studio-1-Calculator/actions/runs/42368304243). Updated-commit CI, merge, and issue closure pending. |
+| Own prediction, check interpretation, browser observation and keep/revise reason | [LEARNING.md](LEARNING.md): learner reports browser 42, API 42 for 6 × 7, decision keep, no additional notes. Original network blocked DuckDNS. Prediction, independent interpretation and separate keep reason remain missing; explanatory prose is labeled AI assistance. |
+| Accuracy review before publishing learner excerpts | Learner explicitly requested publication of the reflection based solely on supplied observations and merge if safe. No separate accuracy-review answer is claimed. |
+| Actual PR, latest CI, merge and issue closure | [PR #2](https://github.com/jakai211/Studio-1-Calculator/pull/2); [full branch CI passed](https://github.com/jakai211/Studio-1-Calculator/actions/runs/44133696274) at `cb273998c3a3284b52477d8b7e5ded05be81e4ac`. See PR checks for the reflection commit and merge state. Issue #1 remains open for documented learner gaps. |
+
+### Reflection completion checks · November 17, 2026
+
+The fresh Windows checkout completed setup with UTF-8 output enabled.
+`python studio.py check --fast`: Black passed (8 files unchanged); Pylint
+reported unavailable Windows `os.geteuid`/`os.chown`; pytest stopped during
+collection because `signal.SIGHUP` is unavailable. These are failures, not passes.
+Local Docker E2E was not run; the Linux CI workflow supplies full checks.
+
+A fresh HTTPS root/API attempt from this environment failed during the TLS
+connection with a connection reset; no new live result is claimed. The existing
+runtime reports are retained with their original timestamps. They are distinct
+from the learner's reported successful test and this unsuccessful retest.
 
 [Current sanitized runtime evidence](studio/evidence.json) is the actual prepared
 `report` export after November 17 verification. The November 7 launch report is
